@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SearchBar       from "./components/searchBar";
+import SearchBar       from "./components/SearchBar";
 import MovieCard       from "./components/MovieCard";
 import LoadingSkeleton from "./components/LoadingSkeleton";
 import ErrorMessage    from "./components/ErrorMessage";
