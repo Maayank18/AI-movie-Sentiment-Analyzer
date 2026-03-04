@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #07070a;
+  color: #e4e4eb;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+#root { max-width: 100%; margin: 0; padding: 0; text-align: left; }
+
+/* ── Scrollbar ─────────────────────── */
+::-webkit-scrollbar        { width: 4px; }
+::-webkit-scrollbar-track  { background: #07070a; }
+::-webkit-scrollbar-thumb  { background: #2a2a3a; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #c9991a; }
+
+/* ── Film grain overlay ────────────── */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 200;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 140px;
+}
+
+/* ── Shimmer skeleton ──────────────── */
+@keyframes shimmer {
+  0%   { background-position: -700px 0; }
+  100% { background-position:  700px 0; }
+}
+.sk {
+  background: linear-gradient(90deg, #111118 0%, #1c1c28 50%, #111118 100%);
+  background-size: 700px 100%;
+  animation: shimmer 2s infinite linear;
+  border-radius: 10px;
+}
+
+/* ── Spin ──────────────────────────── */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.spin { animation: spin 8s linear infinite; }
+.spin-fast { animation: spin 1s linear infinite; }
+
+/* ── Fade up ───────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both; }
+.fade-up-2 { animation: fadeUp 0.7s 0.1s cubic-bezier(0.16,1,0.3,1) both; }
+.fade-up-3 { animation: fadeUp 0.7s 0.2s cubic-bezier(0.16,1,0.3,1) both; }
+.fade-up-4 { animation: fadeUp 0.7s 0.3s cubic-bezier(0.16,1,0.3,1) both; }
+.fade-up-5 { animation: fadeUp 0.7s 0.4s cubic-bezier(0.16,1,0.3,1) both; }
+
+/* ── Input focus glow ──────────────── */
+.search-input:focus-within {
+  box-shadow: 0 0 0 1px rgba(201,153,26,0.5), 0 8px 40px rgba(201,153,26,0.12);
+}
